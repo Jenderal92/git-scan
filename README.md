@@ -1,20 +1,18 @@
 # git-scan
 
-<p>Alat ini dirancang untuk memindai dan mengidentifikasi apakah situs web memiliki direktori ".git" yang terekspos, yang bisa mengandung informasi sensitif seperti kode sumber atau file konfigurasi Git.
+<p>This tool is designed to scan and identify whether a website has an exposed ".git" directory, which may contain sensitive information such as source code or Git configuration files.</p>
 
-## Feature
-
+## Features
 <ul dir="auto">
-<li>Memindai URL secara massal untuk menemukan apakah direktori ".git/HEAD" tersedia di situs web.</li>
-<li>Menggunakan pustaka Python seperti "requests" untuk mengirim permintaan HTTP dan memeriksa responsnya.</li>
-<li>Mendukung penggunaan multithreading untuk mempercepat proses pemindaian di banyak situs secara bersamaan.</li>
-<li>Menampilkan hasil pemindaian dengan status: ditemukan (200 OK), terlarang (403 Forbidden), atau tidak ditemukan (404 Not Found).</li>
-<li>Menangani kesalahan jaringan seperti timeout atau kegagalan koneksi dengan logika retry (coba ulang) yang aman.</li>
-<li>Hasil yang ditemukan akan disimpan langsung ke file hasil ("results.txt") tanpa menghapus hasil sebelumnya.</li>
-<li>Hasil yang ditemukan tidak akan duplikat, memastikan bahwa URL yang sama tidak disimpan lebih dari sekali.</li>
-<li>Memungkinkan pengguna untuk melanjutkan pemindaian tanpa kehilangan hasil sebelumnya jika skrip dijalankan lagi.</li>
+<li>Massively scans URLs to find out if the ".git/HEAD" directory is available on the website.</li>
+<li>Uses Python libraries such as "requests" to send HTTP requests and check the responses.</li>
+<li>Supports multithreading to speed up the scanning process across multiple sites simultaneously.</li>
+<li>Displays scan results with statuses: found (200 OK), forbidden (403 Forbidden), or not found (404 Not Found).</li>
+<li>Handles network errors like timeouts or connection failures with safe retry logic.</li>
+<li>The found results are directly saved to a result file ("results.txt") without overwriting previous results.</li>
+<li>Duplicate results are avoided, ensuring that the same URL is not saved more than once.</li>
+<li>Allows users to resume scanning without losing previous results if the script is run again.</li>
 </ul>
-
 
 ## Buy Coffee :
 <ul dir="auto">
@@ -30,10 +28,10 @@
 
 ## How To Run?
 <ul dir="auto">
-<li>Install Python by downloading it from the official Python website <a href="https://www.python.org">https://www.python.org</a>.</li>
-<li> Install module <code>pip install requests beautifulsoup4 colorama</code></li>
-<li><code>python file.py</code></li>
-<li>Put ur list sites (e.g., url.txt)</li>
+<li>Download and install Python from the official Python website: <a href="https://www.python.org">https://www.python.org</a>.</li>
+<li>Install the required modules using the command: <code>pip install requests</code>.</li>
+<li>Run the script with: <code>python file.py</code>.</li>
+<li>Provide a list of sites (e.g., url.txt) as input.</li>
 </ul>
 
 ## Disclaimer !!!
