@@ -1,4 +1,3 @@
-#https://github.com/Jenderal92/git-scan/
 import requests
 import threading
 from Queue import Queue
@@ -15,7 +14,6 @@ def print_banner():
     """ + Colors.RESET)
 
 def load_previous_results(output_file):
-    """Loads URLs that already exist in previous results."""
     try:
         with open(output_file, 'r') as f:
             return set(line.strip() for line in f if line.strip())
@@ -30,13 +28,17 @@ def scan_url(url, headers, timeout, results, lock, output_file):
     try:
         response = requests.get(git_head_url, headers=headers, timeout=timeout)
         if response.status_code == 200:
-            print(Colors.GREEN + "[+] FOUND: " + git_head_url + Colors.RESET)
-            print("[+] Content: " + response.text.strip())
-            with lock:
-                if git_head_url not in results:
-                    results.add(git_head_url)
-                    with open(output_file, 'a') as f:
-                        f.write(git_head_url + "\n")
+            content = response.text.strip()
+            if "ref: refs/heads/master" in content:
+                print(Colors.GREEN + "[+] FOUND: " + git_head_url + Colors.RESET)
+                print("[+] Content: " + content)
+                with lock:
+                    if git_head_url not in results:
+                        results.add(git_head_url)
+                        with open(output_file, 'a') as f:
+                            f.write(git_head_url + "\n")
+            else:
+                print(Colors.YELLOW + "[!] SKIPPED (Not master branch): " + git_head_url + Colors.RESET)
         elif response.status_code == 403:
             print(Colors.YELLOW + "[!] FORBIDDEN: " + git_head_url + Colors.RESET)
         elif response.status_code == 404:
@@ -66,7 +68,6 @@ def mass_scan(file_path, output_file, thread_count=10):
     previous_results = load_previous_results(output_file)
     print(Colors.GREEN + "[*] Loaded {} existing results from {}".format(len(previous_results), output_file) + Colors.RESET)
 
-
     queue = Queue()
     for url in urls:
         queue.put(url)
@@ -92,7 +93,6 @@ def mass_scan(file_path, output_file, thread_count=10):
         t.join()
 
     print(Colors.GREEN + "[*] Scan complete! Total results: {}".format(len(results)) + Colors.RESET)
-
 
 if __name__ == "__main__":
     print_banner()
