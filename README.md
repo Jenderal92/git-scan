@@ -17,8 +17,6 @@
 ## Buy Coffee :
 <ul dir="auto">
 <li>Bitcoin $: 14nXhmRiQx5joCXFTdR8ydm3T8et7MFDXC</li>
-<li>Buymeacoffee $: https://www.buymeacoffee.com/shin.code</li>
-<li>Ko-Fi $: https://ko-fi.com/shincode403</li>
 </ul>
 
 ![Jenderal92 Git Scanner](https://github.com/user-attachments/assets/bb7c8a3a-d39e-44f8-b623-2010ce5bded8)
